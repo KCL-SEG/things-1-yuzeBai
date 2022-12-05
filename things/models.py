@@ -1,8 +1,8 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import BaseUserManager
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
-class Thing(models.Model):
+class Thing(BaseUserManager):
     name = models.CharField(
         max_length=30,
         unique=True,
@@ -20,3 +20,6 @@ class Thing(models.Model):
         MinValueValidator(0)
         ]
     )
+    USERNAME_FIELD = 'name'
+    EMAIL_FIELD = 'email'
+    REQUIRED_FIELDS = ['name', 'description', 'quantity']
