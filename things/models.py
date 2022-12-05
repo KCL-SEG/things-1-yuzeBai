@@ -23,3 +23,6 @@ class Thing(BaseUserManager):
     USERNAME_FIELD = 'name'
     EMAIL_FIELD = 'email'
     REQUIRED_FIELDS = ['name', 'description', 'quantity']
+
+    def create_thing(self, name, description, quantity):
+        user = self.model(name=name, description=description, quantity=quantity)
