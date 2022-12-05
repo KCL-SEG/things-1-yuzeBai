@@ -2,12 +2,10 @@ from django.contrib.auth.models import AbstractUser
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
-class Thing(AbstractUser):
-    username = models.CharField(blank = True)
-    password = models.CharField(blank = True)
+class Thing(models.Model):
     name = models.CharField(
         max_length=30,
-        #unique=True,
+        unique=True,
         #blank=False
     )
     description = models.CharField(
